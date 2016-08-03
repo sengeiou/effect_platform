@@ -1,0 +1,82 @@
+package com.ali.lz.effect.proto;
+
+option java_package = "com.ali.lz.effect.proto";
+option java_outer_classname = "LzEffectETaoTreeProto";
+
+message ETaoTreeNodeValue{
+	required int64 	ts = 1; // 日志的时间戳
+	required bool 	is_etao = 2;
+	required bool 	ref_is_etao = 3;
+	// etao整体lp标识和来源信息
+	required bool 	is_lp = 4;
+	required bool 	ref_is_lp = 5;
+	optional int32 	lp_src = 9;
+    optional string lp_domain_name = 13;
+    optional string lp_adid = 19;  // 外投广告id
+    optional string lp_tb_market_id = 20;
+	optional string lp_refer_site = 21;
+	optional string lp_site_id = 22;
+	optional string lp_ad_id = 23;
+	optional string lp_apply = 29;
+	optional string lp_t_id = 30;
+	optional string lp_linkname = 31;
+	optional string lp_pub_id = 32;
+	optional string lp_pid_site_id = 33;
+	optional string lp_adzone_id = 34;
+	optional string lp_src_domain_name_level1 = 35;
+	optional string lp_src_domain_name_level2 = 37;
+	optional string lp_keyword = 36;
+	/**
+	 * etao频道页标识和来源信息
+	 * 1. 只有频道页带以下信息：channel_id
+	 * 2. 只有频道页一跳带以下信息：is_channel_lp
+	 * 3. 只有频道页二跳带以下信息：ref_is_channel_lp, ref_channel_src, ref_channel_xxxx来源属性
+	 * 4. 所有refer为频道页的节点带以下信息：ref_channel_id
+	 * 5. 所有频道页和频道页引导的宝贝、店铺节点均带以下信息：channel_src, channel_xxxx来源属性
+	 */
+	optional int32 	channel_id = 66;
+	optional bool 	is_channel_lp = 25;
+	optional int32 	channel_src = 10;
+	optional string channel_adid = 64;
+	optional string channel_tb_market_id = 38;
+	optional string channel_refer_site = 39;
+	optional string channel_site_id = 40;
+	optional string channel_ad_id = 41;
+	optional string channel_apply = 42;
+	optional string channel_t_id = 43;
+	optional string channel_linkname = 44;
+	optional string channel_pub_id = 45;
+	optional string channel_pid_site_id = 46;
+	optional string channel_adzone_id = 47;
+	optional string channel_src_domain_name_level1 = 48;
+	optional string channel_src_domain_name_level2 = 49;
+	optional string channel_keyword = 50;
+	optional int32 	ref_channel_id = 7;
+	optional bool 	ref_is_channel_lp = 8;
+	optional int32 	ref_channel_src = 27;
+	optional string ref_channel_adid = 65;
+	optional string ref_channel_tb_market_id = 51;
+	optional string ref_channel_refer_site = 52;
+	optional string ref_channel_site_id = 53;
+	optional string ref_channel_ad_id = 54;
+	optional string ref_channel_apply = 55;
+	optional string ref_channel_t_id = 56;
+	optional string ref_channel_linkname = 57;
+	optional string ref_channel_pub_id = 58;
+	optional string ref_channel_pid_site_id = 59;
+	optional string ref_channel_adzone_id = 60;
+	optional string ref_channel_src_domain_name_level1 = 61;
+	optional string ref_channel_src_domain_name_level2 = 62;
+	optional string ref_channel_keyword = 63;
+
+	optional string url = 11;
+    optional string refer = 12;
+    optional string shop_id = 14;
+	optional string auction_id = 15;
+	optional string user_id = 16;
+	optional string cookie = 17;  // 计算uv使用字段
+	optional string sid = 24;
+	optional string trade_track_info = 18;
+ 	optional string index_root_path = 26;
+ 	optional string ipv_ref_url = 28;
+	}

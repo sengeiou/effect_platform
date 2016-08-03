@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<effect_plan>
+	<ver>2</ver>
+	<update_interval>60</update_interval>
+	<tree_split method="none" />
+	<analyzer_id>4</analyzer_id>
+	<plan_id>26</plan_id>
+	<ttl>90</ttl>
+	<period>1</period>
+	<attr_calc method="first" />
+	<effects>
+		<ind id="0" ind_id="101" />
+		<ind id="1" ind_id="108" />
+		<ind id="2" ind_id="103" />
+		<ind id="3" ind_id="104" />
+		<ind id="4" ind_id="105" />
+		<ind id="5" ind_id="106" />
+		<ind id="6" ind_id="107" />
+		<ind id="7" ind_id="300" />
+		<ind id="8" ind_id="301" />
+		<ind id="9" ind_id="302" />
+		<ind id="10" ind_id="303" />
+		<ind id="11" ind_id="304" />
+		<ind id="12" ind_id="305" />
+		<ind id="13" ind_id="306" />
+		<ind id="14" ind_id="307" />
+		<ind id="15" ind_id="308" />
+		<ind id="16" ind_id="309" />
+		<ind id="17" ind_id="310" />
+		<ind id="18" ind_id="311" />
+		<ind id="19" ind_id="314" />
+		<ind id="20" ind_id="315" />
+		<ind id="21" ind_id="316" />
+		<ind id="22" ind_id="317" />
+		<ind id="23" ind_id="318" />
+		<ind id="24" ind_id="319" />
+		<ind id="25" ind_id="320" />
+		<ind id="26" ind_id="321" />
+		<ind id="27" ind_id="322" />
+		<ind id="28" ind_id="323" />
+		<ind id="29" ind_id="324" />
+		<ind id="30" ind_id="325" />
+		<ind id="31" ind_id="328" />
+		<ind id="32" ind_id="329" />
+		<ind id="33" ind_id="330" />
+	</effects>
+	<url_type>
+		<rule>
+			<priority>10</priority>
+			<type_id>103</type_id>
+			<match_field>url</match_field>
+			<target_type>url</target_type>
+			<match_regexps>
+				<match_regexp>
+					<regexp><![CDATA[http://taobao.com/effect_page.php]]></regexp>
+				</match_regexp>
+			</match_regexps>
+		</rule>
+	</url_type>
+	<src_path>
+		<rule>
+			<priority>10</priority>
+			<limit>
+				<num>1000</num>
+				<effect_id>0</effect_id>
+			</limit>
+			<path_id>123</path_id>
+			<path>
+				<node expand="rule" id="0" next="1" type_refs="103" />
+				<node expand="rule" id="1" type_refs="0" />
+			</path>
+			<effect_owner>1</effect_owner>
+		</rule>
+	</src_path>
+</effect_plan>

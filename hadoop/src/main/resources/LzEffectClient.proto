@@ -1,0 +1,46 @@
+package com.ali.lz.effect.proto;
+
+option java_package = "com.ali.lz.effect.proto";
+option java_outer_classname = "LzEffectClientProto";
+
+message ClientNodeValue {
+	optional int32 log_type = 1;
+	optional int64 ts = 2;
+	optional string app_key = 3;
+	optional string app_version = 4;
+	optional string eventid = 5;
+	optional string url = 6;
+	optional string refer = 7;
+	optional string auction_id = 8;
+	optional string shop_id = 9;
+	optional string user_id = 10;
+	optional string device_id = 11;
+	optional string ip = 12;
+	optional string carrier = 13;
+	optional string resolution = 14;
+	optional string device_model = 15;
+	optional bool is_effect_page = 16;
+	optional bool refer_is_effect_page = 17;
+	optional string act_name = 18;
+	optional string act_type = 19;
+	optional string pit_id = 20;
+	optional string pit_detail = 21;
+	optional int32 effect_pv = 22;
+	optional int32 direct_ipv = 23;
+	optional int32 guide_ipv = 24;
+	optional int32 direct_gmv_trade_num = 25;
+	optional float direct_gmv_amt = 26;
+	optional int32 direct_alipay_trade_num = 27;
+	optional float direct_alipay_amt = 28;
+	optional int32 guide_gmv_trade_num = 29;
+	optional float guide_gmv_amt = 30;
+	optional int32 guide_alipay_trade_num = 31;
+	optional float guide_alipay_amt = 32;
+	optional int32 gmv_trade_num = 33;
+	optional float gmv_trade_amt = 34;
+	optional int32 gmv_auction_num = 35;
+	optional int32 alipay_trade_num = 36;
+	optional float alipay_trade_amt = 37;
+	optional int32 alipay_auction_num = 38;
+
+}

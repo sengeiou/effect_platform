@@ -1,0 +1,14 @@
+- - id: 0
+    ts: 1340012598
+    p: -1
+    ep: true
+    src:
+      "123\x02111.3.85.155\x03http://trade.taobao.com/trade/itemlist/list_bought_items.htm?spm=3.1000473.0.16&t=20110530":
+        fts: 1340012598
+        pri: 10
+        fep: {prp: "\u0167\u0100", srp: '0'}
+        lep: {prp: "\u0167\u0100", srp: '0'}
+        lts: 1340012598
+    prp: "\u0167\u0100"
+    srp: '0'
+

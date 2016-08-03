@@ -1,0 +1,56 @@
+- - id: 0
+    refer_url: http://aspw1.cn.alibaba.com/
+    ts: 1343663829
+    p: -1
+    rtype: 0
+    ep: false
+    src: {}
+    prp: "\u0100\u0100"
+    ptype: 0
+    url: http://aspw1.cn.alibaba.com/athena/companyprofile/aspw1.html
+    srp: '0'
+  - id: 1
+    refer_url: http://aspw1.cn.alibaba.com/athena/companyprofile/aspw1.html
+    ts: 1343664001
+    p: 0
+    rtype: 0
+    ep: false
+    src: {}
+    prp: "\u0100\u0100\u0100"
+    ptype: 0
+    url: http://aspw1.cn.alibaba.com/athena/contact/aspw1.html
+    srp: '0.1'
+- - id: 2
+    refer_url: http://search.china.alibaba.com/company/company_search.htm?showStyle=noimg
+    ts: 1343664045
+    p: -1
+    rtype: 1
+    ep: false
+    src: {}
+    prp: "\u0101\u0100"
+    ptype: 0
+    url: http://aspw1.cn.alibaba.com/
+    srp: '2'
+  - id: 3
+    refer_url: http://aspw1.cn.alibaba.com/
+    ts: 1343664050
+    p: 2
+    rtype: 0
+    ep: false
+    src: {}
+    prp: "\u0101\u0100\u0100"
+    ptype: 0
+    url: http://aspw1.cn.alibaba.com/athena/contact/aspw1.html
+    srp: '2.3'
+- - id: 4
+    refer_url: http://search.china.alibaba.com/company/company_search.htm?showStyle=noimg
+    ts: 1343664102
+    p: -1
+    rtype: 1
+    ep: false
+    src: {}
+    prp: "\u0101\u0100"
+    ptype: 0
+    url: http://srdz1688.cn.alibaba.com/
+    srp: '4'
+   

@@ -1,0 +1,33 @@
+- - id: 0
+    refer_url: http://www.taobao.com/
+    ts: 1345823240
+    p: -1
+    rtype: 0
+    ep: false
+    src: {}
+    prp: "\u0100\u0100"
+    ptype: 0
+    url: http://www.etao.com/?spm=1.1000386.220593.5&TBG=146280.176778.8&tb_lm_id=t_zdh&tbpm=t
+    srp: '0'
+  - id: 1
+    refer_url: http://www.etao.com/?spm=1.1000386.220593.5&TBG=146280.176778.8&tb_lm_id=t_zdh&tbpm=t
+    ts: 1345823257
+    p: 0
+    rtype: 0
+    ep: false
+    src: {}
+    prp: "\u0100\u0100\u0100"
+    ptype: 0
+    url: http://s.etao.com/search?spm=1002.1.0.126&q=%B5%C7%BB%FA%CF%E4&qservice=s2&initiative_id=setao_20120606&sort=sale-desc&stp=etao.etao_sy.lmdh.tab10.5
+    srp: '0.1'
+  - id: 2
+    refer_url: http://s.etao.com/search?spm=1002.1.0.126&q=%B5%C7%BB%FA%CF%E4&qservice=s2&initiative_id=setao_20120606&sort=sale-desc&stp=etao.etao_sy.lmdh.tab10.5
+    ts: 1345823279
+    p: 1
+    rtype: 0
+    ep: false
+    src: {}
+    prp: "\u0100\u0100\u0100\u0100"
+    ptype: 0
+    url: http://item.taobao.com/item.htm?id=15120119554&ali_trackid=2:mm_14507426_0_0:1345823279_3k5_1253526486
+    srp: 0.1.2

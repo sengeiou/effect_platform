@@ -1,0 +1,369 @@
+# 有效属性为：
+# id  -（必选）Integer, 节点ID，用于在属性 p 中引用
+# p -（必选）Integer, 父节点的ID，用于串接成树，根节点的该属性为 -1
+# srp -（可选）String, 若有则验证该节点的 serial root path
+# prp -（可选）String, 若有则验证该节点的 ptype root path
+# ep  -（可选）Boolean, 若有则验证该节点的 isEffectPage() 结果
+# src -（可选）Map<String, Map<String, Object>>
+#       若 src 非空则验证该节点的 getSources() 结果中是否有匹配的来源标识，
+#       src 为空时要求该节点的 getSources() 结果也为空！
+#       其中键为来源标识字符串，值 map 为空表示不验证，非空时有效键如下所示:
+#   fts -（可选）Long，若有则验证对应来源元数据的 firstOpTS 属性
+#   lts -（可选）Long，若有则验证对应来源元数据的 lastOpTS 属性
+#   pri -（可选）Integer，若有则验证对应来源元数据的 priority 属性
+#   fep -（可选）Map<String, Object>，若有则验证对应来源元数据的 firstEP 属性，非空时有效键如下所示：
+#      srp -（可选）String，若有则验证 firstEP 的 serial root path
+#      prp -（可选）String，若有则验证 firstEP 的 ptype root path
+#   lep -（可选）Map<String, Object>，若有则验证对应来源元数据的 lastEP 属性，非空时有效键如下所示：
+#      srp -（可选）String，若有则验证 firstEP 的 serial root path
+#      prp -（可选）String，若有则验证 firstEP 的 ptype root path
+
+- - id: 0
+    ts: 1339643488
+    p: -1
+    ep: true
+    src:
+      "-1\x02":
+        fts: 1339643488
+        pri: 2147483647
+        fep: {prp: "\u0100\u2810", srp: '0'}
+        lep: {prp: "\u0100\u2810", srp: '0'}
+        lts: 1339643488
+      "0\x0210000":
+        fts: 1339643488
+        pri: 10
+        fep: {prp: "\u0100\u2810", srp: '0'}
+        lep: {prp: "\u0100\u2810", srp: '0'}
+        lts: 1339643488
+    prp: "\u0100\u2810"
+    srp: '0'
+- - id: 1
+    ts: 1339643421
+    p: -1
+    ep: true
+    src:
+      "-1\x02":
+        fts: 1339643421
+        pri: 2147483647
+        fep: {prp: "\u0100\u2810", srp: '1'}
+        lep: {prp: "\u0100\u2810", srp: '1'}
+        lts: 1339643421
+      "0\x0210000":
+        fts: 1339643421
+        pri: 10
+        fep: {prp: "\u0100\u2810", srp: '1'}
+        lep: {prp: "\u0100\u2810\u2810", srp: '1.3'}
+        lts: 1339643523
+    prp: "\u0100\u2810"
+    srp: '1'
+  - id: 2
+    ts: 1339643495
+    p: 1
+    ep: true
+    src:
+      "-1\x02":
+        fts: 1339643421
+        pri: 2147483647
+        fep: {prp: "\u0100\u2810", srp: '1'}
+        lep: {prp: "\u0100\u2810\u2810", srp: '1.2'}
+        lts: 1339643495
+      "0\x0210000":
+        fts: 1339643421
+        pri: 10
+        fep: {prp: "\u0100\u2810", srp: '1'}
+        lep: {prp: "\u0100\u2810\u2810", srp: '1.2'}
+        lts: 1339643495
+    prp: "\u0100\u2810\u2810"
+    srp: '1.2'
+  - id: 4
+    ts: 1339643495
+    p: 1
+    ep: true
+    src:
+      "-1\x02":
+        fts: 1339643421
+        pri: 2147483647
+        fep: {prp: "\u0100\u2810", srp: '1'}
+        lep: {prp: "\u0100\u2810\u2810", srp: '1.4'}
+        lts: 1339643495
+      "0\x0210000":
+        fts: 1339643421
+        pri: 10
+        fep: {prp: "\u0100\u2810", srp: '1'}
+        lep: {prp: "\u0100\u2810\u2810", srp: '1.3'}
+        lts: 1339643523
+    prp: "\u0100\u2810\u2810"
+    srp: '1.4'
+  - id: 5
+    ts: 1339643507
+    p: 1
+    ep: true
+    src:
+      "-1\x02":
+        fts: 1339643421
+        pri: 2147483647
+        fep: {prp: "\u0100\u2810", srp: '1'}
+        lep: {prp: "\u0100\u2810\u2810", srp: '1.5'}
+        lts: 1339643507
+      "0\x0210000":
+        fts: 1339643421
+        pri: 10
+        fep: {prp: "\u0100\u2810", srp: '1'}
+        lep: {prp: "\u0100\u2810\u2810", srp: '1.3'}
+        lts: 1339643523
+    prp: "\u0100\u2810\u2810"
+    srp: '1.5'
+  - id: 3
+    ts: 1339643523
+    p: 1
+    ep: true
+    src:
+      "-1\x02":
+        fts: 1339643421
+        pri: 2147483647
+        fep: {prp: "\u0100\u2810", srp: '1'}
+        lep: {prp: "\u0100\u2810\u2810", srp: '1.3'}
+        lts: 1339643523
+      "0\x0210000":
+        fts: 1339643421
+        pri: 10
+        fep: {prp: "\u0100\u2810", srp: '1'}
+        lep: {prp: "\u0100\u2810\u2810", srp: '1.3'}
+        lts: 1339643523
+    prp: "\u0100\u2810\u2810"
+    srp: '1.3'
+- - id: 0
+    ts: 1339643452
+    p: -1
+    ep: true
+    src:
+      "-1\x02":
+        fts: 1339643452
+        pri: 2147483647
+        fep: {prp: "\u0100\u2810", srp: '0'}
+        lep: {prp: "\u0100\u2810", srp: '0'}
+        lts: 1339643452
+      "0\x0210000":
+        fts: 1339643452
+        pri: 10
+        fep: {prp: "\u0100\u2810", srp: '0'}
+        lep: {prp: "\u0100\u2810", srp: '0'}
+        lts: 1339643452
+    prp: "\u0100\u2810"
+    srp: '0'
+- - id: 1
+    ts: 1339643165
+    p: -1
+    ep: true
+    src:
+      "-1\x02":
+        fts: 1339643165
+        pri: 2147483647
+        fep: {prp: "\u0100\u2810", srp: '1'}
+        lep: {prp: "\u0100\u2810", srp: '1'}
+        lts: 1339643165
+      "0\x0210000":
+        fts: 1339643165
+        pri: 10
+        fep: {prp: "\u0100\u2810", srp: '1'}
+        lep: {prp: "\u0100\u2810\u2810", srp: '1.2'}
+        lts: 1339643319
+    prp: "\u0100\u2810"
+    srp: '1'
+  - id: 3
+    ts: 1339643297
+    p: 1
+    ep: true
+    src:
+      "-1\x02":
+        fts: 1339643165
+        pri: 2147483647
+        fep: {prp: "\u0100\u2810", srp: '1'}
+        lep: {prp: "\u0100\u2810\u2810", srp: '1.3'}
+        lts: 1339643297
+      "0\x0210000":
+        fts: 1339643165
+        pri: 10
+        fep: {prp: "\u0100\u2810", srp: '1'}
+        lep: {prp: "\u0100\u2810\u2810", srp: '1.2'}
+        lts: 1339643319
+    prp: "\u0100\u2810\u2810"
+    srp: '1.3'
+  - id: 2
+    ts: 1339643319
+    p: 1
+    ep: true
+    src:
+      "-1\x02":
+        fts: 1339643165
+        pri: 2147483647
+        fep: {prp: "\u0100\u2810", srp: '1'}
+        lep: {prp: "\u0100\u2810\u2810", srp: '1.2'}
+        lts: 1339643319
+      "0\x0210000":
+        fts: 1339643165
+        pri: 10
+        fep: {prp: "\u0100\u2810", srp: '1'}
+        lep: {prp: "\u0100\u2810\u2810", srp: '1.2'}
+        lts: 1339643319
+    prp: "\u0100\u2810\u2810"
+    srp: '1.2'
+- - id: 4
+    ts: 1339643133
+    p: -1
+    ep: true
+    src:
+      "-1\x02":
+        fts: 1339643133
+        pri: 2147483647
+        fep: {prp: "\u0100\u2810", srp: '4'}
+        lep: {prp: "\u0100\u2810", srp: '4'}
+        lts: 1339643133
+      "0\x0210000":
+        fts: 1339643133
+        pri: 10
+        fep: {prp: "\u0100\u2810", srp: '4'}
+        lep: {prp: "\u0100\u2810", srp: '4'}
+        lts: 1339643133
+    prp: "\u0100\u2810"
+    srp: '4'
+- - id: 0
+    ts: 1339643538
+    p: -1
+    ep: false
+    src: {}
+    prp: "\u0100\u0100"
+    srp: '0'
+- - id: 0
+    ts: 1339643796
+    p: -1
+    ep: true
+    src:
+      "-1\x02":
+        fts: 1339643796
+        pri: 2147483647
+        fep: {prp: "\u0100\u2810", srp: '0'}
+        lep: {prp: "\u0100\u2810", srp: '0'}
+        lts: 1339643796
+      "0\x0210000":
+        fts: 1339643796
+        pri: 10
+        fep: {prp: "\u0100\u2810", srp: '0'}
+        lep: {prp: "\u0100\u2810", srp: '0'}
+        lts: 1339643796
+    prp: "\u0100\u2810"
+    srp: '0'
+- - id: 0
+    ts: 1339643180
+    p: -1
+    ep: true
+    src:
+      "-1\x02":
+        fts: 1339643180
+        pri: 2147483647
+        fep: {prp: "\u0100\u2810", srp: '0'}
+        lep: {prp: "\u0100\u2810", srp: '0'}
+        lts: 1339643180
+      "0\x0210000":
+        fts: 1339643180
+        pri: 10
+        fep: {prp: "\u0100\u2810", srp: '0'}
+        lep: {prp: "\u0100\u2810", srp: '0'}
+        lts: 1339643180
+    prp: "\u0100\u2810"
+    srp: '0'
+- - id: 0
+    ts: 1339644055
+    p: -1
+    ep: true
+    src:
+      "-1\x02":
+        fts: 1339644055
+        pri: 2147483647
+        fep: {prp: "\u0100\u2810", srp: '0'}
+        lep: {prp: "\u0100\u2810", srp: '0'}
+        lts: 1339644055
+      "0\x0210000":
+        fts: 1339644055
+        pri: 10
+        fep: {prp: "\u0100\u2810", srp: '0'}
+        lep: {prp: "\u0100\u2810", srp: '0'}
+        lts: 1339644055
+    prp: "\u0100\u2810"
+    srp: '0'
+- - id: 1
+    ts: 1339643950
+    p: -1
+    ep: true
+    src:
+      "-1\x02":
+        fts: 1339643950
+        pri: 2147483647
+        fep: {prp: "\u0100\u2810", srp: '1'}
+        lep: {prp: "\u0100\u2810", srp: '1'}
+        lts: 1339643950
+      "0\x0210000":
+        fts: 1339643950
+        pri: 10
+        fep: {prp: "\u0100\u2810", srp: '1'}
+        lep: {prp: "\u0100\u2810", srp: '1'}
+        lts: 1339643950
+    prp: "\u0100\u2810"
+    srp: '1'
+- - id: 0
+    ts: 1339643530
+    p: -1
+    ep: true
+    src:
+      "-1\x02":
+        fts: 1339643530
+        pri: 2147483647
+        fep: {prp: "\u0100\u2810", srp: '0'}
+        lep: {prp: "\u0100\u2810", srp: '0'}
+        lts: 1339643530
+      "0\x0210000":
+        fts: 1339643530
+        pri: 10
+        fep: {prp: "\u0100\u2810", srp: '0'}
+        lep: {prp: "\u0100\u2810", srp: '0'}
+        lts: 1339643530
+    prp: "\u0100\u2810"
+    srp: '0'
+- - id: 0
+    ts: 1339643630
+    p: -1
+    ep: true
+    src:
+      "-1\x02":
+        fts: 1339643630
+        pri: 2147483647
+        fep: {prp: "\u0100\u2810", srp: '0'}
+        lep: {prp: "\u0100\u2810", srp: '0'}
+        lts: 1339643630
+      "0\x0210000":
+        fts: 1339643630
+        pri: 10
+        fep: {prp: "\u0100\u2810", srp: '0'}
+        lep: {prp: "\u0100\u2810", srp: '0'}
+        lts: 1339643630
+    prp: "\u0100\u2810"
+    srp: '0'
+- - id: 0
+    ts: 1339643520
+    p: -1
+    ep: true
+    src:
+      "-1\x02":
+        fts: 1339643520
+        pri: 2147483647
+        fep: {prp: "\u0100\u2810", srp: '0'}
+        lep: {prp: "\u0100\u2810", srp: '0'}
+        lts: 1339643520
+      "0\x0210000":
+        fts: 1339643520
+        pri: 10
+        fep: {prp: "\u0100\u2810", srp: '0'}
+        lep: {prp: "\u0100\u2810", srp: '0'}
+        lts: 1339643520
+    prp: "\u0100\u2810"
+    srp: '0'

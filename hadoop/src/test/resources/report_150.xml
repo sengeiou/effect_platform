@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<effect_plan>
+	<ver>2</ver>
+	<update_interval>60</update_interval>
+	<tree_split method="none" />
+	<analyzer_id>4</analyzer_id>
+	<plan_id>150</plan_id>
+	<ttl>90</ttl>
+	<period>1</period>
+	<lookahead>1</lookahead>
+	<attr_calc method="last" />
+	<effects>
+		<ind id="0" ind_id="101" />
+		<ind id="1" ind_id="104" />
+		<ind id="2" ind_id="205" />
+		<ind id="3" ind_id="214" />
+		<ind id="4" ind_id="222" />
+		<ind id="5" ind_id="106" />
+		<ind id="6" ind_id="107" />
+		<ind id="7" ind_id="200" />
+		<ind id="8" ind_id="201" />
+		<ind id="9" ind_id="202" />
+		<ind id="55" ind_id="401" />
+		<ind id="56" ind_id="402" />
+		<ind id="10" ind_id="403" />
+		<ind id="11" ind_id="404" />
+		<ind id="12" ind_id="405" />
+		<ind id="13" ind_id="406" />
+		<ind id="14" ind_id="407" />
+		<ind id="15" ind_id="408" />
+		<ind id="16" ind_id="409" />
+		<ind id="17" ind_id="410" />
+		<ind id="18" ind_id="411" />
+		<ind id="19" ind_id="412" />
+		<ind id="20" ind_id="413" />
+		<ind id="21" ind_id="414" />
+		<ind id="22" ind_id="415" />
+		<ind id="23" ind_id="416" />
+		<ind id="24" ind_id="417" />
+		<ind id="25" ind_id="418" />
+		<ind id="26" ind_id="419" />
+		<ind id="27" ind_id="420" />
+		<ind id="28" ind_id="421" />
+		<ind id="29" ind_id="422" />
+		<ind id="30" ind_id="423" />
+		<ind id="31" ind_id="424" />
+		<ind id="32" ind_id="425" />
+		<ind id="33" ind_id="426" />
+		<ind id="34" ind_id="427" />
+		<ind id="35" ind_id="428" />
+		<ind id="36" ind_id="429" />
+		<ind id="37" ind_id="430" />
+		<ind id="38" ind_id="431" />
+		<ind id="39" ind_id="432" />
+		<ind id="40" ind_id="433" />
+		<ind id="41" ind_id="434" />
+		<ind id="42" ind_id="235" />
+		<ind id="43" ind_id="236" />
+		<ind id="44" ind_id="237" />
+		<ind id="45" ind_id="238" />
+		<ind id="46" ind_id="239" />
+		<ind id="47" ind_id="240" />
+		<ind id="48" ind_id="241" />
+		<ind id="49" ind_id="112" />
+		<ind id="50" ind_id="113" />
+		<ind id="51" ind_id="114" />
+		<ind id="52" ind_id="115" />
+		<ind id="53" ind_id="116" />
+		<ind id="54" ind_id="117" />
+	</effects>
+	<url_type>
+		<rule>
+			<priority>9</priority>
+			<type_id>100</type_id>
+			<match_field>url</match_field>
+			<target_type>referer</target_type>
+			<match_regexps>
+				<match_regexp>
+					<regexp><![CDATA[tb_market_id=]]></regexp>
+				</match_regexp>
+			</match_regexps>
+		</rule>
+		<rule>
+			<priority>10</priority>
+			<type_id>103</type_id>
+			<match_field>url</match_field>
+			<target_type>referer</target_type>
+			<match_regexps>
+				<match_regexp>
+					<regexp><![CDATA[spm=([^&]+)(&|$)]]></regexp>
+					<props>
+						<prop field="spm" value="$1" />
+					</props>
+				</match_regexp>
+			</match_regexps>
+		</rule>
+		<rule>
+			<priority>10</priority>
+			<type_id>106</type_id>
+			<match_field>url</match_field>
+			<target_type>referer</target_type>
+			<match_regexps>
+				<match_regexp>
+					<regexp><![CDATA[ali_trackid=3_]]></regexp>
+				</match_regexp>
+			</match_regexps>
+		</rule>
+		<rule>
+			<priority>10</priority>
+			<type_id>10000</type_id>
+			<match_field>url</match_field>
+			<target_type>url</target_type>
+			<match_regexps>
+				<match_regexp>
+					<regexp><![CDATA[^\Qhttp://www.tmall.com/dct/?from=tiaotiker\E$]]></regexp>
+				</match_regexp>
+			</match_regexps>
+		</rule>
+		<rule>
+			<priority>10</priority>
+			<type_id>10001</type_id>
+			<match_field>url</match_field>
+			<target_type>url</target_type>
+			<match_regexps>
+				<match_regexp>
+					<regexp><![CDATA[^\Qhttp://ju.taobao.com\E$]]></regexp>
+				</match_regexp>
+			</match_regexps>
+		</rule>
+		<rule>
+			<priority>10</priority>
+			<type_id>10002</type_id>
+			<match_field>url</match_field>
+			<target_type>url</target_type>
+			<match_regexps>
+				<match_regexp>
+					<regexp><![CDATA[^\Qhttp://www.taobao.com\E$]]></regexp>
+				</match_regexp>
+			</match_regexps>
+		</rule>
+	</url_type>
+	<src_path>
+		<rule>
+			<priority>10</priority>
+			<limit>
+				<num>1000</num>
+				<effect_id>0</effect_id>
+			</limit>
+			<path_id>53</path_id>
+			<path>
+				<node expand="ptype" id="0" next="1" type_refs="101,102,104,105,106,107,114" />
+				<node expand="rule" id="1" next="1" type_refs="10001" />
+				<node expand="rule" id="2" next="2" type_refs="10002" />
+				<node expand="rule" id="3" type_refs="10000" />
+			</path>
+			<effect_owner>3</effect_owner>
+		</rule>
+		<rule>
+			<priority>10</priority>
+			<limit>
+				<num>1000</num>
+				<effect_id>0</effect_id>
+			</limit>
+			<path_id>10053</path_id>
+			<path>
+				<node expand=":adid" id="0" next="1" type_refs="100" />
+				<node expand="rule" id="1" next="1" type_refs="10001" />
+				<node expand="rule" id="2" next="2" type_refs="10002" />
+				<node expand="rule" id="3" type_refs="10000" />
+			</path>
+			<effect_owner>3</effect_owner>
+		</rule>
+		<rule>
+			<priority>10</priority>
+			<limit>
+				<num>1000</num>
+				<effect_id>0</effect_id>
+			</limit>
+			<path_id>20053</path_id>
+			<path>
+				<node expand=":spm" id="0" next="1" type_refs="103" />
+				<node expand="rule" id="1" next="1" type_refs="10001" />
+				<node expand="rule" id="2" next="2" type_refs="10002" />
+				<node expand="rule" id="3" type_refs="10000" />
+			</path>
+			<effect_owner>3</effect_owner>
+		</rule>
+	</src_path>
+</effect_plan>

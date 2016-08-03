@@ -1,0 +1,273 @@
+# id - case的标识
+# rules - 规则列表
+#   priority - 优先级
+#   effectOwner - 归属点偏移
+#   nodes - 规则中节点定义列表
+#     id - 节点ID
+#     type_refs - 匹配类型ID列表
+#     next - 跳数
+#     expand - 展开选项
+# ep - 效果页类型集合
+# input - 测试输入节点列表, 输入节点顺序是按从当前节点到根节点的顺序
+#   - 
+#     ptype
+#     rtype
+# output - 期望输出列表
+#   -
+#     nodes - 节点列表
+#       typeID - 类型ID
+#       expand - 展开类型
+#     skips - 跳数列表
+#     pathID - 规则ID
+#     priority - 优先级
+
+- #case 1
+  id : "case1"
+ 
+  rules: # 规则
+    - # rule 
+      pathID : 1
+      priority : 1
+      effectOwner : 0
+      nodes: # 1,2 -3-> 2
+        - # node
+          id : 1
+          type_refs : [1, 2]
+          next : 3
+          expand: "rule"
+        - # node
+          id : 2
+          type_refs : [2]
+          next : 0
+          expand: ":key"
+          
+    - # rule 
+      pathID : 2
+      priority : 1
+      effectOwner : 0
+      nodes: # 2 -2-> -1
+        - # node
+          id : 1
+          type_refs : [2]
+          next : 2
+          expand: "rule"
+        - # node
+          id : 2
+          type_refs : [-1]
+          next : 0
+          expand: ":key"
+      
+  ep : [2, -1]
+  io : 
+    - 
+      input:
+        - 
+          ptype : 2
+          rtype : 3
+        -
+          ptype : 9
+          rtype : 1
+        -
+          ptype : 4
+          rtype : 1
+      
+      output:
+        - ownerOffset: 3
+          nodes:
+           - {expand: ':key', typeID: 2}
+           - {expand: rule, typeID: 1}
+          priority: 1
+          pathID: 1
+          skips: [3]
+          
+    - 
+      input:
+        - 
+          ptype : 2
+          rtype : 3
+        -
+          ptype : 9
+          rtype : 1
+        -
+          ptype : 2
+          rtype : 1
+      
+      output:
+        - ownerOffset: 3
+          nodes:
+          - {expand: ':key', typeID: 2}
+          - {expand: rule, typeID: 1}
+          priority: 1
+          pathID: 1
+          skips: [3]
+        - ownerOffset: 2
+          nodes:
+          - {expand: ':key', typeID: 2}
+          - {expand: rule, typeID: 2}
+          priority: 1
+          pathID: 2
+          skips: [2]
+          
+    - 
+      input:
+        - 
+          ptype : 4
+          rtype : 3
+        -
+          ptype : 9
+          rtype : 1
+        -
+          ptype : 2
+          rtype : 1
+      
+      output:
+      - ownerOffset: 2
+        nodes:
+        - {expand: ':key', typeID: 4}
+        - {expand: rule, typeID: 2}
+        priority: 1
+        pathID: 2
+        skips: [2]
+        
+- #case 2
+  id : "case2"
+ 
+  rules: # 规则          
+    - # rule 
+      pathID : 1
+      priority : 1
+      effectOwner : 0
+      nodes: # 2 -2-> -1
+        - # node
+          id : 1
+          type_refs : [2]
+          next : 2
+          expand: "rule"
+        - # node
+          id : 2
+          type_refs : [-1]
+          next : 0
+          expand: ":key"
+      
+  ep : [-1]
+  io : 
+    - 
+      input:
+        - 
+          ptype : 2
+          rtype : 3
+        -
+          ptype : 9
+          rtype : 1
+        -
+          ptype : 4
+          rtype : 1
+      
+      output: []
+
+
+- #case 3
+  id : "case3"
+ 
+  rules: # 规则          
+    - # rule 
+      pathID : 1
+      priority : 1
+      effectOwner : 1
+      nodes: # 1 -1-> 2
+        - # node
+          id : 1
+          type_refs : [1]
+          next : 1
+          expand: "rule"
+        - # node
+          id : 2
+          type_refs : [2]
+          next : 0
+          expand: ":key"
+      
+  ep : [2]
+  io : 
+    - 
+      input:
+        - 
+          ptype : 2
+          rtype : 0
+        -
+          ptype : 1
+          rtype : 0
+        -
+          ptype : 4
+          rtype : 1
+      
+      output:
+      - ownerOffset: 0
+        nodes:
+        - {expand: ':key', typeID: 2}
+        - {expand: rule, typeID: 1}
+        priority: 1
+        pathID: 1
+        skips: [1]
+        
+      input:
+        - 
+          ptype : 2
+          rtype : 0
+      
+      output: []
+
+- #case 4
+  id : "case4"
+ 
+  rules: # 规则          
+    - # rule 
+      pathID : 1
+      priority : 10
+      effectOwner : 0
+      nodes: # 10000
+        - # node
+          id : 0
+          type_refs : [10000]
+          next : 0
+          expand: "ptype"
+    - # rule 
+      pathID : 2
+      priority : 10
+      effectOwner : 1
+      nodes: # 115 -1-> 10000
+        - # node
+          id : 0
+          type_refs : [115]
+          next : 1
+          expand: "ptype"
+        - # node
+          id : 1
+          type_refs : [10000]
+          next : 0
+          expand: "rule"
+      
+  ep : [10000]
+  io : 
+    - 
+      input:
+        -
+          ptype : 10000
+          rtype : 115
+
+      output:
+        - ownerOffset: 0
+          nodes:
+          - {expand: ptype, typeID: 10000}
+          priority: 10
+          pathID: 1
+          skips: [0]
+        - ownerOffset: 0
+          nodes:
+          - {expand: rule, typeID: 10000}
+          - {expand: ptype, typeID: 115}
+          priority: 10
+          pathID: 2
+          skips: [1]      
+
+    
+  

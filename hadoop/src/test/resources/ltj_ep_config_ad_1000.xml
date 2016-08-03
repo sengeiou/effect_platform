@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<effect_plan>
+    <ver>1</ver>
+    <update_interval>0</update_interval>
+    <tree_split method="none"/>
+    <analyzer_id>1</analyzer_id>
+    <plan_id>1000</plan_id>
+    <ttl>0</ttl>
+    <period>1</period>
+    <attr_calc method="last"/>
+    <effects>
+        <ind id="0" ind_id="101"/>
+    </effects>
+    <url_type>
+        <rule>
+            <priority>1</priority>
+            <type_id>1</type_id>
+            <match_field>url</match_field>
+            <target_type>referer</target_type>
+            <match_regexps>
+                <match_regexp>
+                    <regexp><![CDATA[(\?|&)mvtype=([^&]*)]]></regexp>
+                    <props>
+                        <prop field="mvtype" value="$2" />
+                    </props>
+                </match_regexp>
+            </match_regexps>
+            <extract_regexps>
+                <extract_regexp>
+                    <regexp><![CDATA[(\?|&)mvcid=([^&]*)]]></regexp>
+                    <props>
+                        <prop field="mvcid" value="$2" />
+                    </props>
+                </extract_regexp>
+                <extract_regexp>
+                    <regexp><![CDATA[(\?|&)mvsid=([^&]*)]]></regexp>
+                    <props>
+                        <prop field="mvsid" value="$2" />
+                    </props>
+                </extract_regexp>
+                <extract_regexp>
+                    <regexp><![CDATA[(\?|&)mvsidt=([^&]*)]]></regexp>
+                    <props>
+                        <prop field="mvsidt" value="$2" />
+                    </props>
+                </extract_regexp>
+                <extract_regexp>
+                    <regexp><![CDATA[(\?|&)mvcidt=([^&]*)]]></regexp>
+                    <props>
+                        <prop field="mvcidt" value="$2" />
+                    </props>
+                </extract_regexp>
+            </extract_regexps>
+        </rule>
+        <rule>
+            <priority>1</priority>
+            <type_id>2</type_id>
+            <match_field>url</match_field>
+            <target_type>referer</target_type>
+            <match_regexps>
+                <match_regexp>
+                    <regexp><![CDATA[(\?|&)kid=([^&]*)]]></regexp>
+                    <props>
+                        <prop field="kid" value="$2" />
+                    </props>
+                </match_regexp>
+            </match_regexps>
+            <extract_regexps>
+                <extract_regexp>
+                    <regexp><![CDATA[(\?|&)mvsidt=([^&]*)]]></regexp>
+                    <props>
+                        <prop field="mvsidt" value="$2" />
+                    </props>
+                </extract_regexp>
+            </extract_regexps>
+        </rule>
+    </url_type>
+    <src_path>
+        <rule>
+            <priority>1</priority>
+            <limit>
+                <num>1000</num>
+                <effect_id>0</effect_id>
+            </limit>
+            <path_id>1</path_id>
+            <path>
+                <node expand=":mvtype" id="0" next="1" type_refs="1"/>
+                <node expand="rule" id="1" type_refs="0"/>
+            </path>
+            <effect_owner>1</effect_owner>
+        </rule>
+        <rule>
+            <priority>1</priority>
+            <limit>
+                <num>1000</num>
+                <effect_id>0</effect_id>
+            </limit>
+            <path_id>2</path_id>
+            <path>
+                <node expand=":kid" id="0" next="1" type_refs="2"/>
+                <node expand="rule" id="1" type_refs="0"/>
+            </path>
+            <effect_owner>1</effect_owner>
+        </rule>
+    </src_path>
+    <tree_grouping_fields>
+        <fields id="0" name="cookie" />
+        <fields id="1" name="shop_id" />
+    </tree_grouping_fields>
+</effect_plan>

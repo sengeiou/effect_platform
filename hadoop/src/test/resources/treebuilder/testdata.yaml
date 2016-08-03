@@ -1,0 +1,69 @@
+- - id: 0
+    refer_url: http://i.etao.com/favorite/collect_list.html?spm=0.0.0.5.cb0874
+    ts: 1346315445
+    p: -1
+    rtype: 0
+    ep: false
+    src: {}
+    prp: "\u0100\u0100"
+    ptype: 0
+    url: http://detail.tmall.com/item.htm?id=14360858238
+    srp: '0'
+  - id: 1
+    refer_url: http://detail.tmall.com/item.htm?id=14360858238
+    ts: 1346315506
+    p: 0
+    rtype: 0
+    ep: false
+    src: {}
+    prp: "\u0100\u0100\u0100"
+    ptype: 0
+    url: http://detail.etao.com/item.htm?tb_lm_id=t_fangshan_wuzhao&url=http://detail.tmall.com/item.htm?id=14360858238&sel=&v=1&rebatepartner=188
+    srp: '0.1'
+  - id: 2
+    refer_url: http://detail.etao.com/item.htm?tb_lm_id=t_fangshan_wuzhao&url=http://detail.tmall.com/item.htm?id=14360858238&sel=&v=1&rebatepartner=188
+    ts: 1346315738
+    p: 1
+    rtype: 105
+    ep: false
+    src: {}
+    prp: "\u0100\u0100\u0169\u0100"
+    ptype: 0
+    url: http://detail.tmall.com/item.htm?id=14360858238&ali_trackid=2:mm_14507426_0_0:1346315733_4k3_28453791
+    srp: 0.1.2
+  - id: 3
+    refer_url: http://detail.etao.com/item.htm?tb_lm_id=t_fangshan_wuzhao&url=http://detail.tmall.com/item.htm?id=14360858238&sel=&v=1&rebatepartner=188
+    ts: 1346315846
+    p: 1
+    rtype: 105
+    ep: false
+    src: {}
+    prp: "\u0100\u0100\u0169\u0100"
+    ptype: 0
+    url: http://detail.tmall.com/item.htm?id=14360858238&ali_trackid=2:mm_14507426_0_0:1346315843_4k8_46994894
+    srp: 0.1.3
+  - id: 4
+    refer_url: http://detail.etao.com/item.htm?tb_lm_id=t_fangshan_wuzhao&url=http://detail.tmall.com/item.htm?id=14360858238&sel=&v=1&rebatepartner=188
+    ts: 1346315892
+    p: 1
+    rtype: 105
+    ep: false
+    src: {}
+    prp: "\u0100\u0100\u0169\u0100"
+    ptype: 0
+    url: http://detail.tmall.com/item.htm?id=14360858238&ali_trackid=2:mm_14507426_0_0:1346315843_4k8_46994894
+    srp: 0.1.4
+
+# total tree no: 1
+# tree size histogram:
+#	tree size == 1: 0
+#	tree size == 2: 0
+#	tree size == 3: 0
+#	tree size == 4: 0
+#	tree size == 5: 1
+#	tree size == 6: 0
+#	tree size == 7: 0
+#	tree size == 8: 0
+#	tree size == 9: 0
+#	tree size == 10: 0
+#    tree size > 10: 0

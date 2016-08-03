@@ -1,0 +1,75 @@
+package com.etao.data.ep.ownership.proto;
+
+option java_package = "com.etao.data.ep.ownership.proto";
+option java_outer_classname = "LzEffectProto";
+
+message TreeNodeValue{
+    message KeyValueS {
+           optional string key = 1;
+           optional string value = 2;
+    } 
+    message KeyValueI {
+           optional string key = 1;
+           optional int32 value = 2;
+    } 
+
+	optional int64 ts = 1; // 日志的时间戳
+	optional int32 log_type = 2; // 浏览 0  成交 1 收藏 2 购物车 3 站外成交 4 
+    
+    optional string index_root_path = 3; // 树的root_path
+    optional bool is_leaf = 4; // 是否为叶子节点
+    optional bool is_root = 5; // 是否为根节点
+    
+    optional string url = 6;
+    optional string refer = 7;
+    optional string shop_id = 8;
+    optional string auction_id = 9;
+    optional string user_id = 10; 
+    optional int32 ali_corp = 11; // 页面属于4淘类型（0 未知或非阿里系 1 淘宝 2 天猫 3 一淘 4 聚划算）
+    
+    optional string cookie = 12;
+    optional string session = 13;
+    optional string cookie2 = 14;  // 计算uv使用字段
+	
+	message TypeRef {  
+	   optional int32 analyzer_id = 1;  // 用户id
+	   optional int32 plan_id = 2;  // 计划id
+	   
+	   optional bool is_matched = 3; // url match是否匹配
+	   optional int32 rtype = 4; // 页面的父节点类型id
+	   optional int32 ptype = 5;  // 页面类型id
+	   repeated KeyValueI source_info = 6; // 保存match属性类型，对应PTLogEntry的source
+	   repeated KeyValueS captured_info = 7; // 保存match属性结果，对应PTLogEntry的captured
+	   
+	   message TypePathInfo {
+	       optional string src = 1;
+	       optional int64 first_ts = 2;
+	       optional int64 last_ts = 3;
+	       optional int32 priority = 4;
+	       optional bool is_effect_page = 5; // true 是效果页
+           optional bool ref_is_effect_page = 6; // true 是效果页下一跳
+           optional int32 first_guide_jump_num = 7; // 首次被引导页面的跳数
+           optional string first_guide_auction_id = 8; // 首次被引导页面的宝贝ID
+           optional string first_guide_shop_id = 9; // 首次被引导页面的店铺ID
+           optional int32 last_guide_jump_num = 10; // 末次被引导页面的跳数
+           optional string last_guide_auction_id = 11; // 末次被引导页面的宝贝ID
+           optional string last_guide_shop_id = 12; // 末次被引导页面的店铺ID
+	   }
+	   repeated TypePathInfo path_info = 8; // 来源路径信息
+	}
+	repeated TypeRef type_ref = 15; // 节点的对于特定plan的附加属性信息
+	
+	repeated KeyValueS access_useful_extra = 16; 
+    optional string access_extra = 17;
+    
+    optional float pv = 18;
+    optional float gmv_amt = 19;
+    optional float gmv_auction_num = 20;
+    optional float gmv_trade_num = 21;
+    optional float alipay_amt = 22;
+    optional float alipay_auction_num = 23;
+    optional float alipay_trade_num = 24;
+    optional float shop_collect_num = 25;
+    optional float item_collect_num = 26;
+    optional float cart_num = 27;
+}

@@ -1,0 +1,24 @@
+# 有效属性为：
+#	id	-（必选）Integer, 节点ID，用于在属性 p 中引用
+#	p	-（必选）Integer, 父节点的ID，用于串接成树，根节点的该属性为 -1
+#	srp	-（可选）String, 若有则验证该节点的 serial root path
+#	prp	-（可选）String, 若有则验证该节点的 ptype root path
+#	ep	-（可选）Boolean, 若有则验证该节点的 isEffectPage() 结果
+#	src	-（可选）Map<String, Map<String, Object>>，若有则验证该节点的 getSources() 结果中是否有匹配的来源标识
+#				其中键为来源标识字符串，值 map 中可验证的键为:
+#		fts	-（可选）Long，若有则验证对应来源元数据的 firstOpTS 属性
+#		lts -（可选）Long，若有则验证对应来源元数据的 lastOpTS 属性
+#		pri	-（可选）Integer，若有则验证对应来源元数据的 priority 属性
+#   fep -（可选）Map<String, Object>，若有则验证对应来源元数据的 firstEP 属性，非空时有效键如下所示：
+#      srp -（可选）String，若有则验证 firstEP 的 serial root path
+#      prp -（可选）String，若有则验证 firstEP 的 ptype root path
+#   lep -（可选）Map<String, Object>，若有则验证对应来源元数据的 lastEP 属性，非空时有效键如下所示：
+#      srp -（可选）String，若有则验证 firstEP 的 serial root path
+#      prp -（可选）String，若有则验证 firstEP 的 ptype root path
+
+- # 首棵树
+  - {id: 0, p: -1, prp: "\u0100\u0100", ep: false, srp: "0"}
+  - {id: 1, p: 0, prp: "\u0100\u0100\u0100", ep: false, srp: "0.1"}
+  - {id: 2, p: 1, prp: "\u0100\u0100\u0168\u2810", ep: true, srp: "0.1.2"}
+  - {id: 3, p: 1, prp: "\u0100\u0100\u0168\u2810", ep: true, srp: "0.1.3"}
+  - {id: 4, p: 3, prp: "\u0100\u0100\u0168\u2810\u2810", ep: true, srp: "0.1.3.4"}

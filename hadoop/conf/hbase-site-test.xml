@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+/**
+ * Copyright 2010 The Apache Software Foundation
+ *
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+<configuration>
+  <property>
+    <name>fs.default.name</name>
+    <value>hdfs://dw49.kgb.sqa.cm4.tbsite.net:9000</value>
+    <description>The directory shared by region servers.</description>
+  </property>
+  <property>
+    <name>hbase.rootdir</name>
+    <value>hdfs://dw49.kgb.sqa.cm4.tbsite.net:9000/hbase-rd-test/0.94</value>
+    <description>The directory shared by region servers.</description>
+  </property>
+  <property>
+    <name>hbase.cluster.distributed</name>
+    <value>true</value>
+    <description>The mode the cluster will be in. Possible values are
+      false: standalone and pseudo-distributed setups with managed
+      Zookeeper
+      true: fully-distributed with unmanaged Zookeeper Quorum (see hbase-env.sh)
+    </description>
+  </property>
+ <property>
+    <name>hbase.master.port</name>
+    <value>36000</value>
+    <description>The port the HBase Master should bind to.</description>
+  </property>
+  <property>
+    <name>hbase.master.info.port</name>
+    <value>36010</value>
+    <description>The port for the HBase Master web UI.
+    Set to -1 if you do not want a UI instance run.
+    </description>
+  </property>
+  <property>
+    <name>hbase.regionserver.port</name>
+    <value>36020</value>
+    <description>The port the HBase RegionServer binds to.
+    </description>
+  </property>
+
+  <property>
+    <name>hbase.regionserver.info.port</name>
+    <value>36030</value>
+    <description>The port for the HBase RegionServer web UI
+    Set to -1 if you do not want the RegionServer UI to run.
+    </description>
+  </property>
+
+  <property>
+    <name>hbase.zookeeper.quorum</name>
+    <value>10.232.98.77:2181,10.232.98.76:2181,10.232.98.75:2181,10.232.98.74:2181,10.232.98.78:2181</value>
+    <description>Comma separated list of servers in the ZooKeeper Quorum.
+      For example,
+      "host1.mydomain.com,host2.mydomain.com,host3.mydomain.com".
+      By default this is set to localhost for local and pseudo-distributed
+      modes
+      of operation. For a fully-distributed setup, this should be set to a
+      full
+      list of ZooKeeper quorum servers. If HBASE_MANAGES_ZK is set in
+      hbase-env.sh
+      this is the list of servers which we will start/stop ZooKeeper on.
+    </description>
+  </property>
+
+  <property>
+    <name>zookeeper.znode.parent</name>
+    <value>/hbase-rd-test-0.94</value>
+    <description>Root ZNode for HBase in ZooKeeper. All of HBase's ZooKeeper
+      files that are configured with a relative path will go under this node.
+      By default, all of HBase's ZooKeeper file path are configured with a
+      relative path, so they will all go under this directory unless changed.
+    </description>
+  </property>
+<property>
+    <name>hbase.balancer.period</name>
+    <value>1200000</value>
+</property>
+ <property>
+      <name>hfile.block.cache.size</name>
+      <value>0.4</value>
+      <description>
+          Percentage of maximum heap (-Xmx setting) to allocate to block cache
+          used by HFile/StoreFile. Default of 0.2 means allocate 20%.
+          Set to 0 to disable.
+      </description>
+  </property>
+  <property>
+    <name>hbase.regionserver.global.memstore.upperLimit</name>
+    <value>0.35</value>
+    <description>Maximum size of all memstores in a region server before new
+      updates are blocked and flushes are forced. Defaults to 40% of heap
+    </description>
+  </property>
+<property>
+    <name>hbase.hregion.memstore.block.multiplier</name>
+    <value>8</value>
+  </property>
+  <property>
+    <name>hbase.server.thread.wakefrequency</name>
+    <value>100</value>
+  </property>
+  <property>
+    <name>hbase.regionserver.handler.count</name>
+    <value>300</value>
+    <description>Count of RPC Server instances spun up on RegionServers
+    Same property is used by the Master for count of master handlers.
+    Default is 10.
+    </description>
+  </property>
+        <property>
+                <name>hbase.master.distributed.log.splitting</name>
+                <value>true</value>
+        </property>
+        <property>
+                <name>hbase.regionserver.hlog.splitlog.writer.threads</name>
+                <value>3</value>
+        </property>
+  <property>
+    <name>hbase.hregion.max.filesize</name>
+    <value>8589934592</value>
+  </property>
+  <property>
+    <name>hbase.hstore.blockingStoreFiles</name>
+    <value>20</value>
+  </property>
+  <property>
+    <name>hbase.hregion.memstore.flush.size</name>
+         <value>134217728</value>
+  </property>
+  <property>
+    <name>hbase.regionserver.executor.openregion.threads</name>
+         <value>10</value>
+  </property>
+<property>
+    <name>hbase.regionserver.executor.closeregion.threads</name>
+         <value>10</value>
+  </property>
+</configuration>

@@ -1,0 +1,61 @@
+package com.ali.lz.effect.proto;
+
+option java_package = "com.ali.lz.effect.proto";
+option java_outer_classname = "StarLogProtos";
+
+message FlowStarLog {
+	 optional int32 log_version = 1; //标准日志的版本号,当字段修改的时候，此版本号会增加，用于校验等
+	 optional string log_src = 2; // 日志来源的格式(现在只有"atp")
+	 optional string log_time = 3; //  时间(格式：yyyymmdd)
+	 optional int64 ts = 4; //  时间戳（unix时间戳）
+	 optional string url = 5; // 当前的url
+	 optional string refer_url = 6; // refer中pre=的值
+	 optional string uid_mid = 7; // 如果uid为空，这里则写入mid
+	 optional string shopid = 8; // URL中的店铺ID
+	 optional string auctionid = 9; // url中的商品id(商品页和spu页)
+	 optional string ip = 10; // 访问者ip 
+	 optional string mid = 11; // 访问者机器id 
+	 optional string uid = 12; // 会员id 
+	 optional string sid = 13; // session id 
+	 optional string aid = 14; // 原本是广告id的，但未被使用，等同于占位符
+	 optional string agent = 15; // 访问代理信息，如操作系统、浏览器等
+	 optional string adid = 16; // 广告id,前2位数字做类型分类,从10开始代表 如 : 10 线上推广 11 邮件引导 12 搜索引擎
+	 optional string amid = 17; // ALL_TAOBAO_MARKET_ID 全网营销id,独立于ad_id
+	 optional string cmid = 18; // CHANNEL_MARKET_ID 频道营销id
+	 optional string pmid = 19; // PLACE_MARKET_ID 位置营销代码,可以独立于ad_id之外 
+	 optional string nmid = 20; // 从cookie中获取的，由4个字段组成：adid:mid:sessionid:time
+	 optional string nuid = 21; // 从cookie中获取的，由4个字段组成：adid:uid:sessionid:time
+	 optional string channelid = 22; //频道id
+	 optional string dest_type = 23;
+	 optional string puid = 24; //伪UID
+}
+
+message BusinessStarLog {
+   	 optional int32 log_version = 1; //标准日志的版本号,当字段修改的时候，此版本号会增加，用于校验等
+	 optional string log_src = 2; //  日志来源的格式(biz or pay or logistics) 
+	 optional string dest_type = 3;
+	 optional string order_id = 4; //  业务订单号
+	 optional string parent_id = 5; //  父订单号，子订单可以使用此字段来关联支付表和物流表
+	 optional string seller_id = 6; // 卖家id 
+	 optional string buyer_id = 7; //  买家数字id   
+	 optional string auction_id = 8; //  商品数字ID   
+	 optional int64 auction_price = 9; //  商品拍下价格   
+	 optional int64 adjust_fee = 10; //  卖家修改商品价格时对单商品价格的调整   
+	 optional int64 discount_fee = 11; //  单商品的系统折扣  y   
+	 optional int64 buy_amount = 12; //  购买数量   
+	 optional string gmt_create = 13; //  订单创建时间   
+	 optional string gmt_modified = 14; //  订单修改时间（用于计算GMV时过滤被修改的订单）  
+	 optional string pay_time = 15; //  付款的时间，与tc_pay_order的pay_time一致   
+	 optional int32 is_detail = 16; //  是否是子订单 1表示子订单   
+	 optional int32 is_main = 17; //  是否是父订单 1表示父订单   
+	 optional string shop_id = 18; //  成交商品的商店ID   
+	 optional int64 actual_total_fee = 19; //  实际支付总金额，包含邮费
+   	 optional int32 pay_status = 20; // 订单的支付状态（1-未付款，2-已付款，我们目前只关心这两个值，用于确定拍下与支付）
+   	 optional int32 is_new_generated = 21; // 是否是新生成的订单
+   	 optional int32 is_pay	= 22; // 此日志是否表示支付动作.此字段用来表示是否是一个付款动作
+	 optional string db_action = 23; // 产生日志的数据库操作
+	 optional int64 order_modified_t = 24; // unix格式时间戳，日志生成时间（日志头的time字段对应）
+	 optional string trade_no = 25; //订单号，不同于biz_order中的订单号
+	 optional string trade_status = 26; //交易状态
+	 optional string trade_track_info = 27; //交易状态
+}

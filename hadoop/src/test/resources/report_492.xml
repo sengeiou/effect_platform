@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<effect_plan>
+<ver>1</ver>
+<update_interval>60</update_interval>
+<tree_split method="none"/>
+<analyzer_id>5</analyzer_id>
+<plan_id>492</plan_id>
+<ttl>90</ttl>
+<period>1</period>
+<attr_calc method="last"/>
+<effects>
+<ind id="0" ind_id="101"/>
+<ind id="1" ind_id="108"/>
+<ind id="2" ind_id="103"/>
+<ind id="3" ind_id="104"/>
+<ind id="4" ind_id="105"/>
+<ind id="5" ind_id="106"/>
+<ind id="6" ind_id="107"/>
+<ind id="7" ind_id="200"/>
+<ind id="8" ind_id="201"/>
+<ind id="9" ind_id="202"/>
+<ind id="10" ind_id="203"/>
+<ind id="11" ind_id="204"/>
+<ind id="12" ind_id="205"/>
+<ind id="13" ind_id="206"/>
+<ind id="14" ind_id="207"/>
+<ind id="15" ind_id="208"/>
+<ind id="16" ind_id="209"/>
+<ind id="17" ind_id="211"/>
+<ind id="18" ind_id="212"/>
+<ind id="19" ind_id="213"/>
+<ind id="20" ind_id="214"/>
+<ind id="21" ind_id="215"/>
+<ind id="22" ind_id="216"/>
+<ind id="23" ind_id="217"/>
+<ind id="24" ind_id="218"/>
+<ind id="25" ind_id="219"/>
+<ind id="26" ind_id="220"/>
+<ind id="27" ind_id="221"/>
+<ind id="28" ind_id="222"/>
+<ind id="29" ind_id="225"/>
+<ind id="30" ind_id="226"/>
+<ind id="31" ind_id="227"/>
+<ind id="32" ind_id="228"/>
+<ind id="33" ind_id="229"/>
+<ind id="34" ind_id="230"/>
+<ind id="35" ind_id="231"/>
+<ind id="36" ind_id="232"/>
+<ind id="37" ind_id="233"/>
+<ind id="38" ind_id="234"/>
+<ind id="39" ind_id="235"/>
+<ind id="40" ind_id="236"/>
+<ind id="41" ind_id="239"/>
+<ind id="42" ind_id="240"/>
+<ind id="43" ind_id="241"/>
+</effects>
+<url_type>
+<rule>
+<priority>10</priority>
+<type_id>100</type_id>
+<match_field>url</match_field>
+<target_type>referer</target_type>
+<match_regexps>
+<match_regexp>
+<regexp><![CDATA[tb_market_id=]]></regexp>
+</match_regexp>
+</match_regexps>
+</rule>
+<rule>
+<priority>10</priority>
+<type_id>10000</type_id>
+<match_field>url</match_field>
+<target_type>url</target_type>
+<match_regexps>
+<match_regexp>
+<regexp><![CDATA[^\Qhttp://ecup.etao.com/?t&tb_market_id=etao201206_quanwangyure&ad_id=&am_id=&cm_id=&pm_id=\E$]]></regexp>
+</match_regexp>
+</match_regexps>
+</rule>
+</url_type>
+<src_path>
+<rule>
+<priority>10</priority>
+<limit>
+<num>1000</num>
+<effect_id>0</effect_id>
+</limit>
+<path_id>10000</path_id>
+<path>
+<node expand=":adid" id="0" next="1" type_refs="100"/>
+<node expand="rule" id="1" type_refs="10000"/>
+</path>
+<effect_owner>1</effect_owner>
+</rule>
+</src_path>
+</effect_plan>

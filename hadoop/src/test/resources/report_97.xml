@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<effect_plan>
+	<ver>2</ver>
+	<update_interval>60</update_interval>
+	<tree_split method="none" />
+	<analyzer_id>1</analyzer_id>
+	<plan_id>97</plan_id>
+	<ttl>90</ttl>
+	<period>1</period>
+	<attr_calc method="last" />
+	<effects>
+		<ind id="0" ind_id="103" />
+		<ind id="1" ind_id="107" />
+		<ind id="2" ind_id="239" />
+		<ind id="3" ind_id="225" />
+	</effects>
+	<url_type>
+		<rule>
+			<priority>10</priority>
+			<type_id>100</type_id>
+			<match_field>url</match_field>
+			<target_type>referer</target_type>
+			<match_regexps>
+				<match_regexp>
+					<regexp><![CDATA[tb_market_id=]]></regexp>
+				</match_regexp>
+			</match_regexps>
+		</rule>
+		<rule>
+			<priority>10</priority>
+			<type_id>10000</type_id>
+			<match_field>url</match_field>
+			<target_type>url</target_type>
+			<match_regexps>
+				<match_regexp>
+					<regexp><![CDATA[http://taobao.com/effect_page.php]]></regexp>
+				</match_regexp>
+			</match_regexps>
+		</rule>
+	</url_type>
+	<src_path>
+		<rule>
+			<priority>10</priority>
+			<limit>
+				<num>1000</num>
+				<effect_id>0</effect_id>
+			</limit>
+			<path_id>0</path_id>
+			<path>
+				<node expand="ptype" id="0" next="1" type_refs="100,10000" />
+				<node expand="rule" id="1" type_refs="10000" />
+			</path>
+			<effect_owner>1</effect_owner>
+		</rule>
+		<rule>
+			<priority>10</priority>
+			<limit>
+				<num>1000</num>
+				<effect_id>0</effect_id>
+			</limit>
+			<path_id>20000</path_id>
+			<path>
+				<node expand=":spm" id="0" next="1" type_refs="103" />
+				<node expand="rule" id="1" type_refs="10000" />
+			</path>
+			<effect_owner>1</effect_owner>
+		</rule>
+	</src_path>
+</effect_plan>

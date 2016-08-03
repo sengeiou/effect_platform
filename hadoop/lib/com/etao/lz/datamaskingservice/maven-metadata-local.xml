@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+	<groupId>com.etao.lz</groupId>
+	<artifactId>datamaskingservice</artifactId>
+  <versioning>
+    <release>0.1</release>
+    <versions>
+      <version>0.1</version>
+    </versions>
+    <lastUpdated>20120918080653</lastUpdated>
+  </versioning>
+</metadata>

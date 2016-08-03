@@ -1,0 +1,43 @@
+<effect_plan>
+	<ver>2</ver>
+	<analyzer_id>12345</analyzer_id>
+	<plan_id>314</plan_id>
+	<ttl>90</ttl>
+	<update_interval>3600</update_interval>
+	<period>1</period>
+	<url_type>
+		<rule>
+			<priority>10</priority>
+			<type_id>115</type_id>
+			<match_field>referer</match_field>
+			<target_type>referer</target_type>
+			<match_regexps>
+				<match_regexp>
+					<regexp><![CDATA[etao.com]]></regexp>
+				</match_regexp>
+			</match_regexps>
+		</rule>
+	</url_type>
+	<src_path>
+		<rule>
+			<priority>10</priority>
+			<limit>
+				<num>1000</num>
+				<effect_id>1</effect_id>
+			</limit>
+			<path_id>0</path_id>
+			<path>
+				<node id="0" type_refs="115" next="1" expand="ptype" />
+				<node id="1" type_refs="0" expand=":url"/>
+			</path>
+			<effect_owner>1</effect_owner>
+		</rule>
+	</src_path>
+	<tree_split method="none" />
+	<attr_calc method="last" />
+	<effects>
+		<ind id="0" ind_id="103" />
+		<ind id="1" ind_id="104" />
+		<ind id="2" ind_id="205" />
+	</effects>
+</effect_plan>

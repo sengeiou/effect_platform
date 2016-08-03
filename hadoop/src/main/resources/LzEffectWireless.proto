@@ -1,0 +1,60 @@
+package com.ali.lz.effect.proto;
+
+option java_package = "com.ali.lz.effect.proto";
+option java_outer_classname = "LzEffectWirelessProto";
+message WirelessTreeNodeValue {
+	optional int64 ts = 1;
+	optional string platform_id = 2;
+	optional string auction_id = 3;
+	optional string shop_id = 4;
+	optional string user_id = 5;
+    	optional string cookie = 11;
+	message PlanProperty {
+		optional bool is_effect_page = 1;
+		optional bool refer_is_effect_page = 2;
+		optional string plan_id = 3;
+		optional string pit_id = 4;
+		optional string pit_detail = 5;
+	}
+	repeated PlanProperty plan_properties = 6;
+	optional string position_id = 7;
+	optional string url = 8;
+	optional string refer = 9;
+	optional string index_root_path = 10;
+}
+
+message WirelessNodeValue {
+	optional int32 log_type = 1;
+	optional int64 ts = 2;
+	optional string platform_id = 3;
+	optional string auction_id = 4;
+	optional string shop_id = 5;
+	optional string user_id = 6;
+    optional string cookie = 33;
+	optional bool is_effect_page = 7;
+	optional bool refer_is_effect_page = 8;
+	optional string plan_id = 9;
+	optional string pit_id = 10;
+	optional string pit_detail = 11;
+	optional string position_id = 12;
+	optional string url = 13;
+	optional string refer = 14;
+	optional string index_root_path = 15;
+	optional int32 effect_pv = 16;
+	optional int32 direct_ipv = 17;
+	optional int32 guide_ipv = 18;
+	optional int32 direct_gmv_trade_num = 19;
+	optional float direct_gmv_amt = 20;
+	optional int32 direct_alipay_trade_num = 21;
+	optional float direct_alipay_amt = 22;
+	optional int32 guide_gmv_trade_num = 23;
+	optional float guide_gmv_amt = 24;
+	optional int32 guide_alipay_trade_num = 25;
+	optional float guide_alipay_amt = 26;
+	optional int32 gmv_trade_num = 27;
+	optional float gmv_trade_amt = 28;
+	optional int32 gmv_auction_num = 29;
+	optional int32 alipay_trade_num = 30;
+	optional float alipay_trade_amt = 31;
+	optional int32 alipay_auction_num = 32;
+}

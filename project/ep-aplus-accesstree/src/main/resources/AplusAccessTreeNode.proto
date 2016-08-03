@@ -1,0 +1,28 @@
+package com.etao.data.ep.accesstree.proto;
+
+option java_package = "com.etao.data.ep.accesstree.proto";
+option java_outer_classname = "AplusAccessTreeNodeProto";
+
+message AplusAccessTreeNodeValue {
+
+	optional string version = 1;
+	optional string acookie = 2;
+	optional string session_cookie = 3;
+	optional string tree_id = 4;
+	optional string node_id = 5;
+	optional string parent_id = 6;
+	optional string parent_list = 7;
+	optional string ip = 8;
+	optional string user_agent = 9;
+	optional string url = 10;
+	optional string url_info = 11;
+	optional string lzsession = 12;
+	optional string user_id = 13;
+	optional string nick = 14;
+	optional string proxy = 15;
+	optional string pvtime = 16;
+	optional string revised_refer = 17;
+	optional int64 ts = 18;
+	optional string refer = 19;
+
+}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<effect_plan>
+    <ver>1</ver>
+    <update_interval>0</update_interval>
+    <tree_split method="none"/>
+    <analyzer_id>1</analyzer_id>
+    <plan_id>1</plan_id>
+    <ttl>0</ttl>
+    <period>1</period>
+    <attr_calc method="last"/>
+    <effects>
+        <ind id="0" ind_id="101"/>
+    </effects>
+    <url_type>
+        <rule>
+            <priority>1</priority>
+            <type_id>1</type_id>
+            <match_field>src_id</match_field>
+            <target_type>referer</target_type>
+            <match_regexps>
+                <match_regexp>
+                    <regexp><![CDATA[^([1-46-9]\d*)$]]></regexp>
+                    <props>
+                        <prop field="src" value="$1" />
+                    </props>
+                </match_regexp>
+            </match_regexps>
+        </rule>
+    </url_type>
+    <src_path>
+        <rule>
+            <priority>1</priority>
+            <limit>
+                <num>1000</num>
+                <effect_id>0</effect_id>
+            </limit>
+            <path_id>1</path_id>
+            <path>
+                <node expand=":src" id="0" next="1" type_refs="1"/>
+                <node expand="rule" id="1" type_refs="0"/>
+            </path>
+            <effect_owner>1</effect_owner>
+        </rule>
+    </src_path>
+    <root_is_lp>1</root_is_lp>
+</effect_plan>

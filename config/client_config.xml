@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<clientconf>
+    <app app_key="12278902" app_version="3.2.0">
+        <pageview eventid="2001">
+            <act act_type="1" page_sign="page_goods"></act>
+            <act act_type="2" page_sign="page_webview"></act>
+            <detail page_sign="page_detail"></detail>
+            <shop page_sign="page_shop"></shop>
+            <list page_sign="page_search"></list>
+        </pageview>
+    </app>
+</clientconf>

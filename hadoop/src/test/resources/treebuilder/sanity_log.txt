@@ -1,0 +1,6 @@
+ts, sid, url, refer_url, ptype, rtype, ref_id, item_id
+1, abc, http://www.taobao.com, , 0, 0, , 
+2, abc, http://s.taobao.com/search?q=hello&commend=all&ssid=s5-e&search_type=item&sourceId=tb.index, http://www.taobao.com, 0, 0, ,
+3, abc, http://item.taobao.com/item.htm?id=10841924415&ali_refid=a3_420434_1006:1102423116:6::594b42a08d5fe57a0bbefa745c917a1b&ali_trackid=1_594b42a08d5fe57a0bbefa745c917a1b, http://s.taobao.com/search?q=hello&commend=all&ssid=s5-e&search_type=item&sourceId=tb.index, 10000, 104, , 10841924415 
+4, abc, http://item.taobao.com/item.htm?id=2680122203&ali_refid=a3_420434_1006:1102423116:6::338be81f982a03aa18318b1db49ed5ad&ali_trackid=1_338be81f982a03aa18318b1db49ed5ad, http://s.taobao.com/search?q=hello&commend=all&ssid=s5-e&search_type=item&sourceId=tb.index, 10000, 104, , 2680122203
+5, abc, http://item.taobao.com/item.htm?id=3468800321, http://item.taobao.com/item.htm?id=2680122203&ali_refid=a3_420434_1006:1102423116:6::338be81f982a03aa18318b1db49ed5ad&ali_trackid=1_338be81f982a03aa18318b1db49ed5ad, 10000, 0, , 3468800321

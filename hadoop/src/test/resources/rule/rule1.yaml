@@ -1,0 +1,627 @@
+# id - case的标识
+# rules - 规则列表
+#   priority - 优先级
+#   effectOwner - 归属点偏移
+#   nodes - 规则中节点定义列表
+#     id - 节点ID
+#     type_refs - 匹配类型ID列表
+#     next - 跳数
+#     expand - 展开选项
+# ep - 效果页类型集合
+# input - 测试输入节点列表, 输入节点顺序是按从当前节点到根节点的顺序
+#   - 
+#     ptype
+#     rtype
+#     ts
+#     prop
+#       {key : value, ...}
+#     sourceType - 匹配目标决定使用当前节点下一跳中的值还是当前节点中的值, 2为取下一跳 
+#       {key : type,... }
+# output - 期望输出列表
+#   -
+#     src - 颜色
+#     firtOpTS
+#     lastOpTS
+#     priority - 优先级
+#     firstEP - first效果页在输入节点的index
+#     lastEP  - last效果页在输入节点的index
+
+- #case 1
+  id : "case1"
+ 
+  rules: # 规则
+    - # rule 
+      pathID : 1
+      priority : 1
+      effectOwner : 0
+      nodes: # 1,2 -3-> 2
+        - # node
+          id : 1
+          type_refs : [1, 2]
+          next : 3
+          expand: "rule"
+        - # node
+          id : 2
+          type_refs : [2]
+          next : 0
+          expand: ":key"
+          
+    - # rule 
+      pathID : 2
+      priority : 1
+      effectOwner : 0
+      nodes: # 2 -2-> -1
+        - # node
+          id : 1
+          type_refs : [2]
+          next : 2
+          expand: "rule"
+        - # node
+          id : 2
+          type_refs : [-1]
+          next : 0
+          expand: ":key"
+      
+  ep : [2, -1]
+  io:
+  - input:
+    - ptype: 2
+      rtype: 3
+      ts: 3
+      prop: {key: node3}
+    - ptype: 9
+      rtype: 1
+      ts: 2
+      prop: {key: node2}
+    - ptype: 4
+      rtype: 1
+      ts: 1
+      prop: {key: node1}
+    output:
+    - - {firstEP: 0, lastEP: 0, priority: 1, lastOpTS: 1, src: "1\x021\x03node3",
+        firstOpTS: 1}
+    - []
+    - []
+
+  - input:
+    - ptype: 2
+      rtype: 3
+      ts: 3
+      prop: {key: node3}
+    - ptype: 9
+      rtype: 1
+      ts: 2
+      prop: {key: node2}
+    - ptype: 2
+      rtype: 1
+      ts: 1
+      prop: {key: node1}
+    output:
+    - - {firstEP: 0, lastEP: 0, priority: 1, lastOpTS: 1, src: "2\x022\x03node3",
+        firstOpTS: 1}
+      - {firstEP: 0, lastEP: 0, priority: 1, lastOpTS: 1, src: "1\x021\x03node3",
+        firstOpTS: 1}
+    - []
+    - []
+
+  - input:
+    - ptype: 4
+      rtype: 3
+      ts: 3
+      prop: {key: node3}
+    - ptype: 9
+      rtype: 1
+      ts: 2
+      prop: {key: node2}
+    - ptype: 2
+      rtype: 1
+      ts: 1
+      prop: {key: node1}
+    output:
+    - - {firstEP: 0, lastEP: 0, priority: 1, lastOpTS: 1, src: "2\x022\x03node3",
+        firstOpTS: 1}
+    - []
+    - []
+    
+- #case 2
+  id : "case2"
+ 
+  rules: # 规则          
+    - # rule 
+      pathID : 1
+      priority : 1
+      effectOwner : 0
+      nodes: # 2 -2-> -1
+        - # node
+          id : 1
+          type_refs : [2]
+          next : 2
+          expand: "rule"
+        - # node
+          id : 2
+          type_refs : [-1]
+          next : 0
+          expand: ":key"
+      
+  ep : [-1]
+  io : 
+    - 
+      input:
+        - 
+          ptype : 2
+          rtype : 3
+          ts: 3
+          prop: {key: node3}
+        -
+          ptype : 9
+          rtype : 1
+          ts: 2
+          prop: {key: node2}
+        -
+          ptype : 4
+          rtype : 1
+          ts: 1
+          prop: {key: node1}
+      
+      output:    
+       - []
+       - []
+       - []
+       
+- #case 3
+  id : "case3"
+ 
+  rules: # 规则          
+    - # rule 
+      pathID : 1
+      priority : 1
+      effectOwner : 1
+      nodes: # 1 -1-> 2
+        - # node
+          id : 1
+          type_refs : [1]
+          next : 1
+          expand: "rule"
+        - # node
+          id : 2
+          type_refs : [2]
+          next : 0
+          expand: ":key"
+      
+  ep : [2]
+  io : 
+    - 
+      input:
+      - ptype: 2
+        rtype: 0
+        ts: 3
+        prop: {key: node3}
+      - ptype: 1
+        rtype: 0
+        ts: 2
+        prop: {key: node2}
+      - ptype: 4
+        rtype: 1
+        ts: 1
+        prop: {key: node1}
+      output:
+      - - {firstEP: 0, lastEP: 0, priority: 1, lastOpTS: 3, src: "1\x021\x03node3",
+          firstOpTS: 3}
+      - []
+      - []      
+    -
+      input:
+        - 
+          ptype : 2
+          rtype : 0
+          ts: 2
+          prop: {key: node1}
+      
+      output: 
+        - []
+
+- #case 4
+  id : "case4"
+ 
+  rules: # 规则          
+    - # rule 
+      pathID : 1
+      priority : 10
+      effectOwner : 0
+      nodes: # 10000
+        - # node
+          id : 0
+          type_refs : [10000]
+          next : 0
+          expand: "ptype"
+    - # rule 
+      pathID : 2
+      priority : 10
+      effectOwner : 1
+      nodes: # 115 -1-> 10000
+        - # node
+          id : 0
+          type_refs : [115]
+          next : 1
+          expand: "ptype"
+        - # node
+          id : 1
+          type_refs : [10000]
+          next : 0
+          expand: "rule"
+      
+  ep : [10000]
+  io : 
+  - input:
+    - ptype: 10000
+      rtype: 115
+      ts: 3
+      prop: {key: node1}
+    output:
+    - - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 3, src: "2\x02115\x032", firstOpTS: 3}
+      - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 3, src: "1\x0210000", firstOpTS: 3}
+  - input:
+    - ptype: 10000
+      rtype: 115
+      ts: 3
+      prop: {key: node1}
+    - ptype: 10000
+      rtype: 115
+      ts: 2
+      prop: {key: node2}
+    output:
+      - - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 3, src: "2\x02115\x032", firstOpTS: 3}
+        - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 3, src: "1\x0210000", firstOpTS: 3}
+      - - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 3, src: "2\x02115\x032", firstOpTS: 3}
+        - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 3, src: "1\x0210000", firstOpTS: 3}
+
+- #case 5
+  id : "case5"
+ 
+  rules: # 规则          
+    - # rule 
+      pathID : 1
+      priority : 10
+      effectOwner : 0
+      nodes: # 10000
+        - # node
+          id : 0
+          type_refs : [10000]
+          next : 0
+          expand: "ptype"
+    - # rule 
+      pathID : 2
+      priority : 10
+      effectOwner : 1
+      nodes: # 115 -1-> 10000
+        - # node
+          id : 0
+          type_refs : [115]
+          next : 1
+          expand: ":key"
+        - # node
+          id : 1
+          type_refs : [10000]
+          next : 0
+          expand: "rule"
+      
+  ep : [10000]
+  io : 
+
+  - input:
+    - ptype: 10000
+      rtype: 115
+      ts: 3
+      prop: {key: node1}
+    output:
+    - - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 3, src: "1\x0210000", firstOpTS: 3}
+      - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 3, src: "2\x02\x032",
+        firstOpTS: 3}
+
+
+#  - input:
+#    - ptype: 10000
+#      rtype: 115
+#      ts: 3
+#      prop: {key: node1}
+#      sourceType: {key: 2}
+#    - ptype: 10000
+#      rtype: 115
+#      ts: 2
+#      prop: {key: node2}
+#      sourceType: {key: 2}
+#    output:
+#    - - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 3, src: "2\x02node2\x032",
+#        firstOpTS: 3}
+#      - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 3, src: "1\x0210000", firstOpTS: 3}
+#    - - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 3, src: "2\x02node2\x032",
+#        firstOpTS: 3}
+#      - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 3, src: "1\x0210000", firstOpTS: 3}
+#      
+#  - input:
+#    - ptype: 10000
+#      rtype: 10000
+#      ts: 3
+#      prop: {key: node1}
+#      sourceType: {key: 2}
+#    - ptype: 100
+#      rtype: 115
+#      ts: 2
+#      prop: {key: node2}
+#      sourceType: {key: 2}
+#    output:
+#    - - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 3, src: "2\x02node2\x032",
+#        firstOpTS: 3}
+#      - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 3, src: "1\x0210000", firstOpTS: 3}
+#    - - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 3, src: "2\x02node2\x032",
+#        firstOpTS: 3}
+#      - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 3, src: "1\x0210000", firstOpTS: 3}
+      
+- #case 6
+  id : "case6"
+ 
+  rules: # 规则          
+    - # rule 
+      pathID : 1
+      priority : 10
+      effectOwner : 1
+      nodes: # 104,106-1->104,106,10000
+        - # node
+          id : 0
+          type_refs : [104,106]
+          next : 1
+          expand: "ptype"
+        - # node
+          id : 1
+          type_refs : [104,106,10000]
+          next : 0
+          expand: "ptype"
+          
+  ep : [106,10000,104]
+  io : 
+    - 
+      input:
+        - ptype: 10000
+          rtype : 0
+          ts : 5
+        - ptype : 10000
+          rtype : 104
+          ts : 4
+        - ptype : 10000
+          rtype : 104
+          ts : 3
+        - ptype : 0
+          rtype : 0
+          ts : 2
+        - ptype : 0
+          rtype : 0
+          ts : 1
+          
+      output:
+      - - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 5, src: "1\x02104\x0310000",
+          firstOpTS: 5}
+      - - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 5, src: "1\x02104\x0310000",
+          firstOpTS: 5}
+      - - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 5, src: "1\x02104\x0310000",
+          firstOpTS: 5}
+      - []
+      - []
+
+- #case 7
+  id : "case7"
+ 
+  rules: # 规则          
+    - # rule 
+      pathID : 1
+      priority : 10
+      effectOwner : 0
+      nodes: # 10000
+        - # node
+          id : 0
+          type_refs : [10000]
+          next : 0
+          expand: "ptype"
+    - # rule 
+      pathID : 2
+      priority : 10
+      effectOwner : 1
+      nodes: # 115 -1-> 10000
+        - # node
+          id : 0
+          type_refs : [115]
+          next : 1
+          expand: "ptype"
+        - # node
+          id : 1
+          type_refs : [10000]
+          next : 0
+          expand: "rule"
+      
+  ep : [10000]
+  io : 
+    - input:
+      - ptype: 10000
+        rtype: 10000
+        ts: 3
+      - ptype: 1000
+        rtype: 100
+        ts: 2
+      - ptype: 10000
+        rtype: 115
+        ts: 1
+      output:
+      - - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 3, src: "2\x02115\x032", firstOpTS: 3}
+        - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 3, src: "1\x0210000", firstOpTS: 3}
+      - - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 3, src: "2\x02115\x032", firstOpTS: 3}
+        - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 3, src: "1\x0210000", firstOpTS: 3}
+      - - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 3, src: "2\x02115\x032", firstOpTS: 3}
+        - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 3, src: "1\x0210000", firstOpTS: 3}
+    - input:
+      - ptype: 10000
+        rtype: 10000
+        ts: 3
+        prop: {key: node1}
+        sourceType: {key: 2}
+      - ptype: 100
+        rtype: 100
+        ts: 2
+        prop: {key: node2}
+        sourceType: {key: 2}
+      - ptype: 1000
+        rtype: 115
+        ts: 1
+        prop: {key: node2}
+        sourceType: {key: 2}   
+      output:
+       - - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 3, src: "1\x0210000", firstOpTS: 3}
+       - - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 3, src: "1\x0210000", firstOpTS: 3}
+       - []
+    - input:
+      - ptype: 10000
+        rtype: 115
+        ts: 3
+      output:
+      - - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 3, src: "2\x02115\x032", firstOpTS: 3}
+        - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 3, src: "1\x0210000", firstOpTS: 3}
+        
+- #case 8
+  id : "case8"
+ 
+  rules: # 规则          
+    - # rule 
+      pathID : 1
+      priority : 10
+      effectOwner : 0
+      nodes: # 103 -1-> 10001 -1->10000
+        - # node
+          id : 0
+          type_refs : [103]
+          next : 1
+          expand: "ptype"
+        - # node
+          id : 1
+          type_refs : [10001]
+          next : 1
+          expand: "ptype"
+        - # node
+          id : 2
+          type_refs : [10000]
+          next : 0
+          expand: "ptype"
+        
+  ep : [10000]
+  io : 
+    -
+      input :
+      - ptype: 10000
+        rtype: 103
+        ts: 3
+      - ptype: 10001
+        rtype: 103
+        ts: 2
+      - ptype: 0
+        rtype: 0
+        ts: 1
+      output :
+      - - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 1, src: "1\x02103\x0310001\x03\
+            10000", firstOpTS: 1}
+      - []
+      - []
+      
+- #case 9
+  id : "case9"
+ 
+  rules: # 规则          
+    - # rule 
+      pathID : 1
+      priority : 10
+      effectOwner : 0
+      nodes: # 103 -1->0
+        - # node
+          id : 0
+          type_refs : [103]
+          next : 1
+          expand: "ptype"
+        - # node
+          id : 1
+          type_refs : [0]
+          next : 0
+          expand: "ptype"       
+  ep : [0]
+  io : 
+    -
+      input :
+      - ptype: 0
+        rtype: 103
+        ts: 3
+      - ptype: 0
+        rtype: 0
+        ts: 2
+      output :
+      - - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 2, src: "1\x02103\x030", firstOpTS: 2}
+      - []
+      
+- #case 10
+  id : "case10"
+  rules: # 规则          
+    - # rule 
+      pathID : 1
+      priority : 10
+      effectOwner : 0
+      nodes: # 103 -1-> 10001 -1-> 10002 -3-> 10003 -1-> 10000
+        - # node
+          id : 0
+          type_refs : [103]
+          next : 1
+          expand: "ptype"
+        - # node
+          id : 1
+          type_refs : [10001]
+          next : 1
+          expand: "ptype"  
+        - # node
+          id : 2
+          type_refs : [10002]
+          next : 3
+          expand: "ptype"      
+        - # node
+          id : 3
+          type_refs : [10003]
+          next : 1
+          expand: "ptype"  
+        - # node
+          id : 4
+          type_refs : [10000]
+          next : 0
+          expand: "ptype" 
+  ep : [10000]
+  io : 
+    -
+      input :
+        - ptype: 10000
+          rtype: 0
+          ts: 6
+        - ptype: 10003
+          rtype: 0
+          ts: 5
+        - ptype: 0
+          rtype: 107
+          ts: 4
+        - ptype: 0
+          rtype: 103
+          ts: 3
+        - ptype: 10002
+          rtype: 0
+          ts: 2
+        - ptype: 10001
+          rtype: 103
+          ts: 1
+      output:
+        - - {firstEP: 0, lastEP: 0, priority: 10, lastOpTS: 1, src: "1\x02103\x0310001\x03\
+              10002\x0310003\x0310000", firstOpTS: 1}
+        - []
+        - []
+        - []
+        - []
+        - []    
+      

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<effect_plan>
+	<ver>1</ver>
+	<update_interval>0</update_interval>
+	<tree_split method="none" />
+	<analyzer_id>1</analyzer_id>
+	<plan_id>1</plan_id>
+	<ttl>0</ttl>
+	<period>1</period>
+	<hjlj_tag>1</hjlj_tag>
+	<attr_calc method="last" />
+	<effects>
+		<ind id="0" ind_id="101" />
+	</effects>
+	<url_type>
+		<rule>
+			<priority>1</priority>
+			<type_id>1</type_id>
+			<match_field>adid</match_field>
+			<target_type>referer</target_type>
+			<match_regexps>
+				<match_regexp>
+					<regexp><![CDATA[([0-9a-zA-Z_]+)]]></regexp>
+					<props>
+						<prop field="adid" value="$1" />
+					</props>
+				</match_regexp>
+			</match_regexps>
+		</rule>
+		<rule>
+			<priority>1</priority>
+			<type_id>2</type_id>
+			<match_field>url</match_field>
+			<target_type>url</target_type>
+			<match_regexps>
+				<match_regexp>
+					<regexp><![CDATA[^\Qhttp://www.tmall.com/list\E]]></regexp>
+				</match_regexp>
+			</match_regexps>
+		</rule>
+		<rule>
+			<priority>1</priority>
+			<type_id>3</type_id>
+			<match_field>url</match_field>
+			<target_type>url</target_type>
+			<match_regexps>
+				<match_regexp>
+					<regexp><![CDATA[^\Qhttp://detail.tmall.com/item1234\E]]></regexp>
+				</match_regexp>
+			</match_regexps>
+		</rule>
+	</url_type>
+	<src_path>
+		<rule>
+			<priority>1</priority>
+			<limit>
+				<num>1000</num>
+				<effect_id>0</effect_id>
+			</limit>
+			<path_id>1</path_id>
+			<path>
+				<node expand=":adid" id="0" next="1" type_refs="1" />
+				<node expand="rule" id="1" next="1" type_refs="2" />
+				<node expand="rule" id="2" type_refs="3" />
+			</path>
+			<effect_owner>2</effect_owner>
+		</rule>
+	</src_path>
+</effect_plan>
